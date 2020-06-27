@@ -26,5 +26,8 @@ class Post(models.Model):
     category = models.ManyToManyField(Category)
     read = models.IntegerField(default=0)
 
+    class Meta:
+        ordering = ['-pk']
+
     def __str__(self):
         return self.title
