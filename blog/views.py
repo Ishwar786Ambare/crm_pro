@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from .models import Post
+import datetime
 
 
-# Create your views here.
 def index(request):
+    week_ago = datetime.date.today() - datetime.timedelta(days=7)
+    trends = Post.objects.filter(time_upload__gte=week_ago).order_by('-read')
+
     parms = {
-        'posts': Post.objects.filter(published=True)
+        'posts': Post.objects.filter(published=True),
+        'trends': trends,
     }
     return render(request, 'index.html', parms)
 
