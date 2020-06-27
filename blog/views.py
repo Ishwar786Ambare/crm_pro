@@ -9,7 +9,7 @@ def index(request):
 
     parms = {
         'posts': Post.objects.filter(published=True),
-        'trends': trends,
+        'trends': trends[:4],
     }
     return render(request, 'index.html', parms)
 

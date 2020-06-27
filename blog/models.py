@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 class Author(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rate = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.user}'
